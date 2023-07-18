@@ -2,6 +2,7 @@ import { BulletPointsWrapper, HomeContainer, Main, MainWrapper } from './styles'
 import coffeeImg from '../../assets/Coffee.png'
 import BulletPoint from '../../components/BulletPoint'
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react'
+import CoffeeList from '../../components/CoffeeList'
 
 export function Home() {
     return (
@@ -39,7 +40,7 @@ export function Home() {
                 </Main>
                 <img src={coffeeImg} alt="" />
             </MainWrapper>
-            <h1>Home</h1>
+            <CoffeeList />
         </HomeContainer>
     )
 }

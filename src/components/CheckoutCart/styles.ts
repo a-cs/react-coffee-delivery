@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 
-export const CartContainer = styled.button`
+export const CheckoutCartContainer = styled.button`
     border: none;
     border-radius: 6px;
     background: ${(props) => props.theme['yellow-light']};

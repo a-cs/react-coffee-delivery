@@ -1,7 +1,7 @@
 import { HeaderContainer, LocationContainer, RightContainer } from './styles'
 import { MapPin } from '@phosphor-icons/react'
 import logoImg from '../../assets/Logo.svg'
-import Cart from '../Cart'
+import Cart from '../CheckoutCart'
 import { NavLink } from 'react-router-dom'
 
 export function Header() {
