@@ -21,11 +21,20 @@ export const CoffeeCardContainer = styled.div`
     }
 `
 
+export const TagContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+`
+
 export const Tag = styled.span`
     margin-top: 0.75rem;
     padding: 0.25rem 0.5rem;
     background-color: ${(props) => props.theme['yellow-light']};
     color: ${(props) => props.theme['yellow-dark']};
+    border-radius: 100px;
     font-size: 0.625rem;
     font-weight: 700;
     text-transform: uppercase;

@@ -5,25 +5,37 @@ import {
     Description,
     Footer,
     Tag,
+    TagContainer,
     Title,
 } from './styles'
-import img from '../../assets/Type=Expresso.png'
 import AddToCartButton from '../AddToCartButton'
 import InputNumber from '../InputNumber'
+import { Coffee } from '../CoffeeList'
 
-export function CoffeeCard() {
+interface CoffeeCardProps {
+    coffee: Coffee
+}
+
+export function CoffeeCard({ coffee }: CoffeeCardProps) {
     return (
         <CardContainer>
             <CoffeeCardContainer>
-                <img src={img} alt="" />
-                <Tag>Tradicional</Tag>
-                <Title>Expresso Tradicional</Title>
-                <Description>
-                    O tradicional café feito com água quente e grãos moídos
-                </Description>
+                <img src={coffee.imageSrc} alt="" />
+                <TagContainer>
+                    {coffee.tags.map((tag) => {
+                        return <Tag key={tag}>{tag}</Tag>
+                    })}
+                </TagContainer>
+                <Title>{coffee.name}</Title>
+                <Description>{coffee.description}</Description>
                 <Footer>
                     <p>
-                        R$ <span>9,90</span>
+                        R${' '}
+                        <span>
+                            {parseFloat(String(coffee.price))
+                                .toFixed(2)
+                                .replace('.', ',')}
+                        </span>
                     </p>
                     <ButtonsContainer>
                         <InputNumber />

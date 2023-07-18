@@ -14,6 +14,7 @@ export const CoffeeListContainer = styled.div`
 
 export const CoffeeListWrapper = styled.div`
     margin-top: 3.375rem;
+    margin-bottom: 9.8125rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
