@@ -1,4 +1,5 @@
 import {
+    BottomContainer,
     ButtonsContainer,
     CardContainer,
     CoffeeCardContainer,
@@ -27,21 +28,23 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
                     })}
                 </TagContainer>
                 <Title>{coffee.name}</Title>
-                <Description>{coffee.description}</Description>
-                <Footer>
-                    <p>
-                        R${' '}
-                        <span>
-                            {parseFloat(String(coffee.price))
-                                .toFixed(2)
-                                .replace('.', ',')}
-                        </span>
-                    </p>
-                    <ButtonsContainer>
-                        <InputNumber />
-                        <AddToCartButton />
-                    </ButtonsContainer>
-                </Footer>
+                <BottomContainer>
+                    <Description>{coffee.description}</Description>
+                    <Footer>
+                        <p>
+                            R${' '}
+                            <span>
+                                {parseFloat(String(coffee.price))
+                                    .toFixed(2)
+                                    .replace('.', ',')}
+                            </span>
+                        </p>
+                        <ButtonsContainer>
+                            <InputNumber />
+                            <AddToCartButton />
+                        </ButtonsContainer>
+                    </Footer>
+                </BottomContainer>
             </CoffeeCardContainer>
         </CardContainer>
     )

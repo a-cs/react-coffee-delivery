@@ -5,10 +5,11 @@ export const CardContainer = styled.div`
     height: 19.375rem;
     background-color: ${(props) => props.theme['base-card']};
     border-radius: 6px 36px;
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
 `
 
 export const CoffeeCardContainer = styled.div`
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +49,16 @@ export const Title = styled.h2`
     font-weight: 700;
 `
 
+export const BottomContainer = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+`
+
 export const Description = styled.p`
+    align-self: stretch;
     margin-top: 0.5rem;
     padding: 0.25rem 0.5rem;
     color: ${(props) => props.theme['base-label']};
@@ -60,11 +70,11 @@ export const Description = styled.p`
 
 export const Footer = styled.footer`
     width: 100%;
-    margin-top: 2.0625rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 1.25rem;
 
     p {
         font-size: 0.875rem;
