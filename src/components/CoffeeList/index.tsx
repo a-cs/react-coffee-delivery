@@ -1,13 +1,6 @@
+import { Coffee } from '../../reducers/Cart/Reducer'
 import CatalogCard from '../Cards/CatalogCard'
 import { CoffeeListContainer, CoffeeListWrapper } from './styles'
-
-export interface Coffee {
-    name: string
-    tags: string[]
-    description: string
-    imageSrc: string
-    price: number
-}
 
 const coffeeList: Coffee[] = [
     {

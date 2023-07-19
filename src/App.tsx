@@ -4,13 +4,16 @@ import { GlobalStyle } from './components/styles/global'
 import isPropValid from '@emotion/is-prop-valid'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
+import { CartContextProvider } from './contexts/CartContext'
 
 function App() {
     return (
         <ThemeProvider theme={defaultTheme}>
             <StyleSheetManager shouldForwardProp={isPropValid}>
                 <BrowserRouter>
-                    <Router />
+                    <CartContextProvider>
+                        <Router />
+                    </CartContextProvider>
                 </BrowserRouter>
             </StyleSheetManager>
             <GlobalStyle />

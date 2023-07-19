@@ -1,7 +1,7 @@
 import { ButtonsContainer, CartCardContainer, ColumnContainer } from './styles'
 import InputNumber from '../../InputNumber'
-import { Coffee } from '../../CoffeeList'
 import SecondaryButton from '../../Buttons/SecondaryButton'
+import { Coffee } from '../../../reducers/Cart/Reducer'
 
 interface CartCardProps {
     coffee: Coffee
@@ -15,7 +15,7 @@ export function CartCard({ coffee }: CartCardProps) {
                 <ColumnContainer>
                     <p>{coffee.name}</p>
                     <ButtonsContainer>
-                        <InputNumber />
+                        <InputNumber value={coffee.quantity || 0} />
                         <SecondaryButton />
                     </ButtonsContainer>
                 </ColumnContainer>
