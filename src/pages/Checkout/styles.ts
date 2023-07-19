@@ -6,7 +6,6 @@ export const CheckoutContainer = styled.div`
     flex: 1;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     gap: 2rem;
 `
@@ -17,11 +16,12 @@ export const LeftContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+    margin-bottom: 15rem;
 `
 
 export const RightContainer = styled.div`
     display: flex;
-    width: 40rem;
+    width: 28rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
