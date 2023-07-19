@@ -56,26 +56,11 @@ export const Header = styled.header<HeaderProps>`
     }
 `
 
-export const InputContainer = styled.div`
+export const InputRowWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     gap: 0.75rem;
-`
-
-interface InputProps {
-    width?: string
-}
-
-export const Input = styled.input<InputProps>`
-    display: flex;
-    width: ${(props) => (props.width ? props.width : '100%')};
-    padding: 0.75rem;
-    align-items: center;
-    gap: 4px;
-    border-radius: 4px;
-    border: 1px solid ${(props) => props.theme['base-button']};
-    background: ${(props) => props.theme['base-input']};
 `

@@ -2,25 +2,25 @@ import {
     BottomContainer,
     ButtonsContainer,
     CardContainer,
-    CoffeeCardContainer,
+    CatalogCardContainer,
     Description,
     Footer,
     Tag,
     TagContainer,
     Title,
 } from './styles'
-import AddToCartButton from '../AddToCartButton'
-import InputNumber from '../InputNumber'
-import { Coffee } from '../CoffeeList'
+import AddToCartButton from '../../Buttons/AddToCartButton'
+import InputNumber from '../../InputNumber'
+import { Coffee } from '../../CoffeeList'
 
-interface CoffeeCardProps {
+interface CatalogCardProps {
     coffee: Coffee
 }
 
-export function CoffeeCard({ coffee }: CoffeeCardProps) {
+export function CatalogCard({ coffee }: CatalogCardProps) {
     return (
         <CardContainer>
-            <CoffeeCardContainer>
+            <CatalogCardContainer>
                 <img src={coffee.imageSrc} alt="" />
                 <TagContainer>
                     {coffee.tags.map((tag) => {
@@ -45,9 +45,9 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
                         </ButtonsContainer>
                     </Footer>
                 </BottomContainer>
-            </CoffeeCardContainer>
+            </CatalogCardContainer>
         </CardContainer>
     )
 }
 
-export default CoffeeCard
+export default CatalogCard

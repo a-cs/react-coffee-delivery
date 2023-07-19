@@ -1,9 +1,9 @@
+import Input from '../Input'
 import SelectButton from '../SelectButton'
 import {
     FormContainer,
     Header,
-    Input,
-    InputContainer,
+    InputRowWrapper,
     PanelContainer,
 } from './styles'
 import {
@@ -27,21 +27,41 @@ export function Form() {
                         </h3>
                     </div>
                 </Header>
-                <InputContainer>
-                    <Input width="12.5rem" type="text" placeholder="CEP" />
-                </InputContainer>
-                <InputContainer>
-                    <Input type="text" placeholder="Rua" />
-                </InputContainer>
-                <InputContainer>
-                    <Input width="12.5rem" type="text" placeholder="Número" />
+                <InputRowWrapper>
+                    <Input
+                        containerWidth="12.5rem"
+                        type="text"
+                        placeholder="CEP"
+                        required
+                    />
+                </InputRowWrapper>
+                <InputRowWrapper>
+                    <Input type="text" placeholder="Rua" required />
+                </InputRowWrapper>
+                <InputRowWrapper>
+                    <Input
+                        containerWidth="12.5rem"
+                        type="text"
+                        placeholder="Número"
+                        required
+                    />
                     <Input type="text" placeholder="Complemento" />
-                </InputContainer>
-                <InputContainer>
-                    <Input width="12.5rem" type="text" placeholder="Bairro" />
-                    <Input type="text" placeholder="Cidade" />
-                    <Input width="3.75rem" type="text" placeholder="UF" />
-                </InputContainer>
+                </InputRowWrapper>
+                <InputRowWrapper>
+                    <Input
+                        containerWidth="12.5rem"
+                        type="text"
+                        placeholder="Bairro"
+                        required
+                    />
+                    <Input type="text" placeholder="Cidade" required />
+                    <Input
+                        containerWidth="3.75rem"
+                        type="text"
+                        placeholder="UF"
+                        required
+                    />
+                </InputRowWrapper>
             </PanelContainer>
             <PanelContainer>
                 <Header iconColor="purple">
@@ -54,7 +74,7 @@ export function Form() {
                         </h3>
                     </div>
                 </Header>
-                <InputContainer>
+                <InputRowWrapper>
                     <SelectButton
                         isSelected={true}
                         icon={<CreditCard size={16} />}
@@ -70,7 +90,7 @@ export function Form() {
                         icon={<Money size={16} />}
                         text="dinheiro"
                     />
-                </InputContainer>
+                </InputRowWrapper>
             </PanelContainer>
         </FormContainer>
     )

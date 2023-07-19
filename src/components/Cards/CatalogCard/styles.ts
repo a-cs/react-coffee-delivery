@@ -8,7 +8,7 @@ export const CardContainer = styled.div`
     padding: 0 1.25rem;
 `
 
-export const CoffeeCardContainer = styled.div`
+export const CatalogCardContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;

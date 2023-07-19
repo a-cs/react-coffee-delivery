@@ -1,4 +1,4 @@
-import CoffeeCard from '../CoffeeCard'
+import CatalogCard from '../Cards/CatalogCard'
 import { CoffeeListContainer, CoffeeListWrapper } from './styles'
 
 export interface Coffee {
@@ -123,7 +123,7 @@ export function CoffeeList() {
             <h1>Nossos cafés</h1>
             <CoffeeListWrapper>
                 {coffeeList.map((coffee) => {
-                    return <CoffeeCard key={coffee.name} coffee={coffee} />
+                    return <CatalogCard key={coffee.name} coffee={coffee} />
                 })}
             </CoffeeListWrapper>
         </CoffeeListContainer>
