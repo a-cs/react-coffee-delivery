@@ -3,17 +3,26 @@ import { Minus, Plus } from '@phosphor-icons/react'
 
 interface InputNumberProps {
     value: number
+    onIncrease: () => void
+    onDecrease: () => void
+    minValue: number
 }
 
-export function InputNumber({ value }: InputNumberProps) {
-    function handleChange() {
-        return ''
-    }
+export function InputNumber({
+    value,
+    onIncrease,
+    onDecrease,
+    minValue,
+}: InputNumberProps) {
     return (
         <InputNumberContainer>
-            <Minus size={14} />
-            <input type="number" onChange={handleChange} value={value} />
-            <Plus size={14} />
+            <button disabled={value === minValue} onClick={onDecrease}>
+                <Minus size={14} />
+            </button>
+            <input type="number" readOnly value={value} />
+            <button disabled={value >= 99} onClick={onIncrease}>
+                <Plus size={14} />
+            </button>
         </InputNumberContainer>
     )
 }

@@ -1,6 +1,10 @@
 import { ReactNode, createContext, useReducer } from 'react'
 import { CartReducer, Coffee } from '../reducers/Cart/Reducer'
-import { addNewItemAction } from '../reducers/Cart/Actions'
+import {
+    addNewItemAction,
+    changeItemQuantityAction,
+    removeItemAction,
+} from '../reducers/Cart/Actions'
 
 interface CartContextProviderProps {
     children: ReactNode
@@ -8,7 +12,10 @@ interface CartContextProviderProps {
 
 interface CartContextType {
     cart: Coffee[]
+    cartTotalQuantity: number
     addItemToCart: (item: Coffee) => void
+    changeItemQuantity: (itemName: string, quantity: number) => void
+    removeItem: (itemName: string) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -63,11 +70,32 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     })
     const { cart } = cartState
 
+    const cartTotalQuantity = cart.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.quantity,
+        0,
+    )
+
     function addItemToCart(item: Coffee) {
         dispatch(addNewItemAction(item))
     }
+
+    function changeItemQuantity(itemName: string, quantity: number) {
+        dispatch(changeItemQuantityAction(itemName, quantity))
+    }
+
+    function removeItem(itemName: string) {
+        dispatch(removeItemAction(itemName))
+    }
     return (
-        <CartContext.Provider value={{ cart, addItemToCart }}>
+        <CartContext.Provider
+            value={{
+                cart,
+                cartTotalQuantity,
+                addItemToCart,
+                changeItemQuantity,
+                removeItem,
+            }}
+        >
             {children}
         </CartContext.Provider>
     )

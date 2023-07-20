@@ -24,12 +24,27 @@ export const InputNumberContainer = styled.div`
         }
     }
 
-    svg {
-        color: ${(props) => props.theme.purple};
-        transition: 0.1s;
+    button {
+        border: none;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
-        &:hover {
-            color: ${(props) => props.theme['purple-dark']};
+
+        svg {
+            color: ${(props) => props.theme.purple};
+            transition: 0.1s;
+            &:hover {
+                color: ${(props) => props.theme['purple-dark']};
+            }
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            svg {
+                color: ${(props) => props.theme['base-label']};
+            }
         }
     }
 `

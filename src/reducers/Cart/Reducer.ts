@@ -6,7 +6,7 @@ export interface Coffee {
     description: string
     imageSrc: string
     price: number
-    quantity?: number
+    quantity: number
 }
 
 interface CartState {
@@ -21,6 +21,22 @@ export function CartReducer(state: CartState, action: any) {
             return {
                 ...state,
                 cart: [...state.cart, action.payload.newItem],
+            }
+        case ActionTypes.CHANGE_ITEM_QUANTITY:
+            return {
+                ...state,
+                cart: state.cart.map((item) =>
+                    item.name === action.payload.itemName
+                        ? { ...item, quantity: action.payload.newQuantity }
+                        : item,
+                ),
+            }
+        case ActionTypes.REMOVE_ITEM:
+            return {
+                ...state,
+                cart: state.cart.filter(
+                    (item) => item.name !== action.payload.itemName,
+                ),
             }
         default:
             return state
