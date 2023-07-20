@@ -5,6 +5,7 @@ interface IconContainerProps {
 }
 
 export const BulletPointContainer = styled.div`
+    width: 100%;
     flex: 1 0 50%;
     display: flex;
     flex-direction: row;

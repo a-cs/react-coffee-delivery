@@ -17,25 +17,29 @@ export function Home() {
 
                     <BulletPointsWrapper>
                         <BulletPoint
-                            text="Compra simples e segura"
                             iconBackgroundColor="yellow-dark"
                             icon={<ShoppingCart size={16} weight="fill" />}
-                        />
+                        >
+                            <p>Compra simples e segura</p>
+                        </BulletPoint>
                         <BulletPoint
-                            text="Embalagem mantém o café intacto"
                             iconBackgroundColor="base-text"
                             icon={<Package size={16} weight="fill" />}
-                        />
+                        >
+                            <p>Embalagem mantém o café intacto</p>
+                        </BulletPoint>
                         <BulletPoint
-                            text="Entrega rápida e rastreada"
                             iconBackgroundColor="yellow"
                             icon={<Timer size={16} weight="fill" />}
-                        />
+                        >
+                            <p>Entrega rápida e rastreada</p>
+                        </BulletPoint>
                         <BulletPoint
-                            text="O café chega fresquinho até você"
                             iconBackgroundColor="purple"
                             icon={<Coffee size={16} weight="fill" />}
-                        />
+                        >
+                            <p>O café chega fresquinho até você</p>
+                        </BulletPoint>
                     </BulletPointsWrapper>
                 </Main>
                 <img src={coffeeImg} alt="" />

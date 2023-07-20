@@ -1,13 +1,14 @@
+import { ReactNode } from 'react'
 import { BulletPointContainer, IconContainer } from './styles'
 
 interface BulletPointProps {
-    text: string
+    children: ReactNode
     iconBackgroundColor: string
     icon: any
 }
 
 export function BulletPoint({
-    text,
+    children,
     iconBackgroundColor,
     icon,
 }: BulletPointProps) {
@@ -16,7 +17,7 @@ export function BulletPoint({
             <IconContainer backgroundColor={iconBackgroundColor}>
                 {icon}
             </IconContainer>
-            <span>{text}</span>
+            <div>{children}</div>
         </BulletPointContainer>
     )
 }

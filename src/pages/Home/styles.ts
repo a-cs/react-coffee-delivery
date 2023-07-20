@@ -10,7 +10,6 @@ export const HomeContainer = styled.div`
 
 export const MainWrapper = styled.div`
     padding: 5.875rem 0;
-    flex-basis: 52.5;
     display: flex;
     flex-direction: row;
     align-items: center;
