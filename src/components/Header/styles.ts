@@ -2,8 +2,17 @@ import { styled } from 'styled-components'
 
 export const HeaderContainer = styled.header`
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: ${(props) => props.theme.background};
+`
+
+export const HeaderDiv = styled.div`
+    max-width: 70rem;
+    width: 100%;
     display: flex;
-    margin: 2rem auto;
+    margin: 2rem auto 1rem;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

@@ -1,6 +1,8 @@
+import { useContext } from 'react'
 import { Coffee } from '../../reducers/Cart/Reducer'
 import CatalogCard from '../Cards/CatalogCard'
 import { CoffeeListContainer, CoffeeListWrapper } from './styles'
+import CartContext from '../../contexts/CartContext'
 
 const coffeeList: Coffee[] = [
     {
@@ -9,6 +11,7 @@ const coffeeList: Coffee[] = [
         description: 'O tradicional café feito com água quente e grãos moídos',
         imageSrc: 'src/assets/Type=Expresso.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Expresso Americano',
@@ -16,6 +19,7 @@ const coffeeList: Coffee[] = [
         description: 'Expresso diluído, menos intenso que o tradicional',
         imageSrc: 'src/assets/Type=Americano.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Expresso Cremoso',
@@ -23,6 +27,7 @@ const coffeeList: Coffee[] = [
         description: 'Café expresso tradicional com espuma cremosa',
         imageSrc: 'src/assets/Type=Expresso Cremoso.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Expresso Gelado',
@@ -30,6 +35,7 @@ const coffeeList: Coffee[] = [
         description: 'Bebida preparada com café expresso e cubos de gelo',
         imageSrc: 'src/assets/Type=Café Gelado.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Café com Leite',
@@ -37,6 +43,7 @@ const coffeeList: Coffee[] = [
         description: 'Meio a meio de expresso tradicional com leite vaporizado',
         imageSrc: 'src/assets/Type=Café com Leite.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Latte',
@@ -45,6 +52,7 @@ const coffeeList: Coffee[] = [
             'Uma dose de café expresso com o dobro de leite e espuma cremosa',
         imageSrc: 'src/assets/Type=Latte.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Capuccino',
@@ -53,6 +61,7 @@ const coffeeList: Coffee[] = [
             'Bebida com canela feita de doses iguais de café, leite e espuma',
         imageSrc: 'src/assets/Type=Capuccino.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Macchiato',
@@ -61,6 +70,7 @@ const coffeeList: Coffee[] = [
             'Café expresso misturado com um pouco de leite quente e espuma',
         imageSrc: 'src/assets/Type=Macchiato.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Mocaccino',
@@ -69,6 +79,7 @@ const coffeeList: Coffee[] = [
             'Café expresso com calda de chocolate, pouco leite e espuma',
         imageSrc: 'src/assets/Type=Mochaccino.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Chocolate Quente',
@@ -77,6 +88,7 @@ const coffeeList: Coffee[] = [
             'Bebida feita com chocolate dissolvido no leite quente e café',
         imageSrc: 'src/assets/Type=Chocolate Quente.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Cubano',
@@ -85,6 +97,7 @@ const coffeeList: Coffee[] = [
             'Drink gelado de café expresso com rum, creme de leite e hortelã',
         imageSrc: 'src/assets/Type=Cubano.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Havaiano',
@@ -92,6 +105,7 @@ const coffeeList: Coffee[] = [
         description: 'Bebida adocicada preparada com café e leite de coco',
         imageSrc: 'src/assets/Type=Havaiano.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Árabe',
@@ -99,6 +113,7 @@ const coffeeList: Coffee[] = [
         description: 'Bebida preparada com grãos de café árabe e especiarias',
         imageSrc: 'src/assets/Type=Árabe.png',
         price: 9.9,
+        quantity: 0,
     },
     {
         name: 'Irlandês',
@@ -107,10 +122,24 @@ const coffeeList: Coffee[] = [
             'Bebida a base de café, uísque irlandês, açúcar e chantilly',
         imageSrc: 'src/assets/Type=Irlandês.png',
         price: 9.9,
+        quantity: 0,
     },
 ]
 
 export function CoffeeList() {
+    const { cart } = useContext(CartContext)
+
+    function isItemPresentInCart(itemName: string) {
+        return cart.find((element) => element.name === itemName)
+    }
+    coffeeList.map((item) => {
+        const itemPresent = isItemPresentInCart(item.name)
+        if (itemPresent) {
+            item.quantity = itemPresent.quantity
+        }
+        return item
+    })
+
     return (
         <CoffeeListContainer>
             <h1>Nossos cafés</h1>

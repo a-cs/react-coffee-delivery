@@ -1,9 +1,12 @@
 import { AddToCartButtonContainer } from './styles'
 import { ShoppingCart } from '@phosphor-icons/react'
 
-export function AddToCartButton() {
+interface AddToCartButtonProps {
+    onAddToCart: () => void
+}
+export function AddToCartButton({ onAddToCart }: AddToCartButtonProps) {
     return (
-        <AddToCartButtonContainer>
+        <AddToCartButtonContainer onClick={onAddToCart}>
             <ShoppingCart size={22} weight="fill" />
         </AddToCartButtonContainer>
     )

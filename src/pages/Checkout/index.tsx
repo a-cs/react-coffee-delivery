@@ -24,7 +24,7 @@ export function Checkout() {
         0,
     )
 
-    const deliveryPrice = 3.5
+    const deliveryPrice = cartTotalPrice ? 3.5 : 0
 
     const totalPrice = cartTotalPrice + deliveryPrice
 

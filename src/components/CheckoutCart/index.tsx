@@ -7,10 +7,10 @@ export function CheckoutCart() {
     const { cartTotalQuantity } = useContext(CartContext)
     return (
         <CheckoutCartContainer
-            spanWidth={10 + String(cartTotalQuantity).length * 9}
+            spanWidth={10 + String(cartTotalQuantity).length * 10}
         >
             <ShoppingCart size={22} weight="fill" />
-            <span>{cartTotalQuantity}</span>
+            {cartTotalQuantity ? <span>{cartTotalQuantity}</span> : ''}
         </CheckoutCartContainer>
     )
 }
