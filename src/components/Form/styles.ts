@@ -4,7 +4,7 @@ interface HeaderProps {
     iconColor: string
 }
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -63,4 +63,15 @@ export const InputRowWrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     gap: 0.75rem;
+`
+
+interface ButtonPanelContainerProps {
+    error: any
+}
+
+export const ButtonPanelContainer = styled(
+    PanelContainer,
+)<ButtonPanelContainerProps>`
+    border: 1px solid
+        ${(props) => (props.error ? props.theme.red : 'transparent')};
 `

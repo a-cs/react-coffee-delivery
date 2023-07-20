@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 interface InputContainerProps {
     containerWidth?: string
     isRequired?: boolean
+    error: any
 }
 
 export const InputContainer = styled.div<InputContainerProps>`
@@ -15,7 +16,9 @@ export const InputContainer = styled.div<InputContainerProps>`
             props.containerWidth ? props.containerWidth : '100%'};
         padding: 0.75rem;
         border-radius: 4px;
-        border: 1px solid ${(props) => props.theme['base-button']};
+        border: 1px solid
+            ${(props) =>
+                props.error ? props.theme.red : props.theme['base-button']};
         background: ${(props) => props.theme['base-input']};
         font-size: 0.875rem;
         color: ${(props) => props.theme['base-text']};

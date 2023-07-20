@@ -4,11 +4,21 @@ interface SelectButtonProps {
     icon: any
     text: string
     isSelected: boolean
+    onSetValue: () => void
 }
 
-export function SelectButton({ icon, text, isSelected }: SelectButtonProps) {
+export function SelectButton({
+    icon,
+    text,
+    isSelected,
+    onSetValue, // onSelect,
+}: SelectButtonProps) {
     return (
-        <SelectButtonContainer isSelected={isSelected} type="button">
+        <SelectButtonContainer
+            onClick={onSetValue}
+            isSelected={isSelected}
+            type="button"
+        >
             {icon}
             <span>{text}</span>
         </SelectButtonContainer>
