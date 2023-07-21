@@ -17,13 +17,20 @@ export function CartReducer(state: CartState, action: any) {
     console.log('action:', action)
     console.log('state:', state)
     switch (action.type) {
-        case ActionTypes.ADD_NEW_ITEM:
-            return {
+        case ActionTypes.ADD_NEW_ITEM: {
+            const newState = {
                 ...state,
                 cart: [...state.cart, action.payload.newItem],
             }
-        case ActionTypes.CHANGE_ITEM_QUANTITY:
-            return {
+            localStorage.setItem(
+                '@CoffeeDelivery:cartData',
+                JSON.stringify(newState),
+            )
+
+            return newState
+        }
+        case ActionTypes.CHANGE_ITEM_QUANTITY: {
+            const newState = {
                 ...state,
                 cart: state.cart.map((item) =>
                     item.name === action.payload.itemName
@@ -31,18 +38,36 @@ export function CartReducer(state: CartState, action: any) {
                         : item,
                 ),
             }
-        case ActionTypes.REMOVE_ITEM:
-            return {
+            localStorage.setItem(
+                '@CoffeeDelivery:cartData',
+                JSON.stringify(newState),
+            )
+
+            return newState
+        }
+        case ActionTypes.REMOVE_ITEM: {
+            const newState = {
                 ...state,
                 cart: state.cart.filter(
                     (item) => item.name !== action.payload.itemName,
                 ),
             }
-        case ActionTypes.REMOVE_ALL_ITEMS:
-            return {
+            localStorage.setItem(
+                '@CoffeeDelivery:cartData',
+                JSON.stringify(newState),
+            )
+
+            return newState
+        }
+        case ActionTypes.REMOVE_ALL_ITEMS: {
+            const newState = {
                 ...state,
                 cart: [],
             }
+            localStorage.removeItem('@CoffeeDelivery:cartData')
+
+            return newState
+        }
         default:
             return state
     }
