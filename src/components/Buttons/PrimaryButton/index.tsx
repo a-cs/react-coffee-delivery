@@ -5,8 +5,12 @@ interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode
 }
 
-export function PrimaryButton({ children }: PrimaryButtonProps) {
-    return <PrimaryButtonContainer>{children}</PrimaryButtonContainer>
+export function PrimaryButton({ children, disabled }: PrimaryButtonProps) {
+    return (
+        <PrimaryButtonContainer disabled={disabled}>
+            {children}
+        </PrimaryButtonContainer>
+    )
 }
 
 export default PrimaryButton

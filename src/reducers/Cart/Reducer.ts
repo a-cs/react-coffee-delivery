@@ -38,6 +38,11 @@ export function CartReducer(state: CartState, action: any) {
                     (item) => item.name !== action.payload.itemName,
                 ),
             }
+        case ActionTypes.REMOVE_ALL_ITEMS:
+            return {
+                ...state,
+                cart: [],
+            }
         default:
             return state
     }

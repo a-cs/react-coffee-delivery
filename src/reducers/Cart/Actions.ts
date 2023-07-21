@@ -4,6 +4,7 @@ export enum ActionTypes {
     ADD_NEW_ITEM = 'ADD_NEW_ITEM',
     CHANGE_ITEM_QUANTITY = 'CHANGE_ITEM_QUANTITY',
     REMOVE_ITEM = 'REMOVE_ITEM',
+    REMOVE_ALL_ITEMS = 'REMOVE_ALL_ITEMS',
 }
 
 export function addNewItemAction(newItem: Coffee) {
@@ -34,5 +35,11 @@ export function removeItemAction(itemName: string) {
         payload: {
             itemName,
         },
+    }
+}
+
+export function removeAllItemsAction() {
+    return {
+        type: ActionTypes.REMOVE_ALL_ITEMS,
     }
 }

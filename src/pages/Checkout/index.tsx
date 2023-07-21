@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import PrimaryButton from '../../components/Buttons/PrimaryButton'
 import CartCard from '../../components/Cards/CartCard'
@@ -29,11 +30,11 @@ const CheckoutFormValidationSchema = zod.object({
     paymentMethod: zod.string().nonempty('Campo Obrigatório'),
 })
 
-type CheckoutFormData = Zod.infer<typeof CheckoutFormValidationSchema>
+export type CheckoutFormData = Zod.infer<typeof CheckoutFormValidationSchema>
 
 export function Checkout() {
-    const { cart } = useContext(CartContext)
-
+    const { cart, removeAllItems } = useContext(CartContext)
+    const navigate = useNavigate()
     const cartTotalPrice = cart.reduce(
         (accumulator, currentValue) =>
             accumulator + currentValue.quantity * currentValue.price,
@@ -57,6 +58,7 @@ export function Checkout() {
     const {
         handleSubmit,
         formState: { errors },
+        reset,
     } = checkoutForm
     console.log('formState:', errors)
 
@@ -70,6 +72,10 @@ export function Checkout() {
 
     function handlePayment(data: any) {
         console.log('form', data)
+        localStorage.setItem('@CoffeeDelivery:orderData', JSON.stringify(data))
+        removeAllItems()
+        reset()
+        navigate('/success')
     }
 
     function handleErrors(errors: any) {
@@ -108,7 +114,7 @@ export function Checkout() {
                             <strong>R$ {formatValue(totalPrice)}</strong>
                         </RowContainer>
                     </ColumnContainer>
-                    <PrimaryButton type="submit">
+                    <PrimaryButton disabled={!cart.length} type="submit">
                         Confirmar Pedido
                     </PrimaryButton>
                 </PanelContainer>

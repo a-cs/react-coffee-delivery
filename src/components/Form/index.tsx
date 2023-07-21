@@ -36,11 +36,11 @@ export function Form() {
         },
         {
             icon: <Bank size={16} />,
-            text: 'cartão de débito',
+            text: 'Cartão de Débito',
         },
         {
             icon: <Money size={16} />,
-            text: 'dinheiro',
+            text: 'Dinheiro',
         },
     ]
 

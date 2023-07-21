@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Coffee } from '../../reducers/Cart/Reducer'
 import CatalogCard from '../Cards/CatalogCard'
 import { CoffeeListContainer, CoffeeListWrapper } from './styles'
@@ -128,23 +128,28 @@ const coffeeList: Coffee[] = [
 
 export function CoffeeList() {
     const { cart } = useContext(CartContext)
+    const [updatedCoffeeList, setUpdatedCoffeeList] = useState<Coffee[]>([])
 
-    function isItemPresentInCart(itemName: string) {
-        return cart.find((element) => element.name === itemName)
-    }
-    coffeeList.map((item) => {
-        const itemPresent = isItemPresentInCart(item.name)
-        if (itemPresent) {
-            item.quantity = itemPresent.quantity
+    useEffect(() => {
+        console.log('cart:', cart)
+        function isItemPresentInCart(itemName: string) {
+            return cart.find((element) => element.name === itemName)
         }
-        return item
-    })
+        setUpdatedCoffeeList(
+            coffeeList.map((item) => {
+                const itemPresent = isItemPresentInCart(item.name)
+                return itemPresent
+                    ? { ...item, quantity: itemPresent.quantity }
+                    : item
+            }),
+        )
+    }, [cart])
 
     return (
         <CoffeeListContainer>
             <h1>Nossos cafés</h1>
             <CoffeeListWrapper>
-                {coffeeList.map((coffee) => {
+                {updatedCoffeeList.map((coffee) => {
                     return <CatalogCard key={coffee.name} coffee={coffee} />
                 })}
             </CoffeeListWrapper>

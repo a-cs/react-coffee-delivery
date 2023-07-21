@@ -22,4 +22,10 @@ export const PrimaryButtonContainer = styled.button`
     &:hover {
         background: ${(props) => props.theme['yellow-dark']};
     }
+
+    &:disabled {
+        background: ${(props) => props.theme['base-hover']};
+        color: ${(props) => props.theme['base-label']};
+        cursor: not-allowed;
+    }
 `
